@@ -4,47 +4,43 @@ import java.util.ArrayList;
 
 public class Card {
 
-    private ArrayList<Integer> card;
+    private ArrayList <Row> card = new ArrayList<Row>();
+    private boolean resultGame = true;
 
-    public void setCard(ArrayList<Integer> card) {
-        this.card = card;
-    }
-
-    public ArrayList<Integer> getCard() {
+    public ArrayList<Row> getCard() {
         return card;
     }
 
-//    private ArrayList<Integer> row2;
-//    private ArrayList<Integer> row3;
+    public boolean isResultGame() {
+        return resultGame;
+    }
 
-//    public Card() {
-//        int min = 1;
-//        int max = 30;
-//        for (int i = 0; i < 5 ; i++) {
-//             for (int j = 0; i < 5; i++) {
-//                Random rnd = new Random();
-//                Boolean resultAdd = true;
-//                while (resultAdd){
-//                    int temp = min + rnd.nextInt(max - min);
-//                    if (card.indexOf(temp) != -1 ){
-//                        card.add(temp);
-//                        resultAdd = false;
-//                    }
-//                }
-//            }
-//            min += 30;
-//            max += 30;
-//        }
-//    }
+    public Card() {
+        Row row1 = new Row(1, 30);
+        Row row2 = new Row(31, 60);
+        Row row3 = new Row(61, 90);
+        card.add(row1);
+        card.add(row2);
+        card.add(row3);
+    }
 
+    public void moveGame(int move){
+        int i = 0;
+        if (move > 60) {
+            i = 2;
+        } else if (move > 30  && move <= 60) {
+            i = 1;
+        }
+            resultGame = card.get(i).moveTest(move);
+    }
 
-    public void moveTest (int move ) {
-        int ind = card.indexOf(move);
-        if (ind != -1) {
-            card.remove(ind);
-            if (card.isEmpty()) {
-                System.out.println("Win");
+    public void printCard(){
+        for (Row row: card) {
+            System.out.print("row: ");
+            for( Integer n: row.getRow()){
+                System.out.print(n + ", ");
             }
+            System.out.println();
         }
     }
 

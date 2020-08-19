@@ -1,2 +1,4 @@
 # Project exclude paths
 /target/
+/java_for_testers.iml
+/.idea/
