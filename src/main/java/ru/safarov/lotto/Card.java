@@ -1,47 +1,42 @@
 package ru.safarov.lotto;
 
-import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
+
 
 public class Card {
 
-    private ArrayList<Integer> card;
+    private Set<Integer> card = new HashSet<Integer>();
 
-    public void setCard(ArrayList<Integer> card) {
+    public void setCard(Set<Integer> card) {
         this.card = card;
     }
 
-    public ArrayList<Integer> getCard() {
+    public Set<Integer> getCard() {
         return card;
     }
 
 //    private ArrayList<Integer> row2;
 //    private ArrayList<Integer> row3;
 
-//    public Card() {
-//        int min = 1;
-//        int max = 30;
-//        for (int i = 0; i < 5 ; i++) {
-//             for (int j = 0; i < 5; i++) {
-//                Random rnd = new Random();
-//                Boolean resultAdd = true;
-//                while (resultAdd){
-//                    int temp = min + rnd.nextInt(max - min);
-//                    if (card.indexOf(temp) != -1 ){
-//                        card.add(temp);
-//                        resultAdd = false;
-//                    }
-//                }
-//            }
-//            min += 30;
-//            max += 30;
-//        }
-//    }
+    public Card() {
+        int min = 1;
+        int max = 91;
+        for (int i = 0; i < 15 ; i++) {
+            while (true){
+                int temp = min + (int)(Math.random()*(max-min));
+                if (!card.contains(temp)){
+                    card.add(temp);
+                    break;
+                }
+            }
+        }
+    }
 
 
     public void moveTest (int move ) {
-        int ind = card.indexOf(move);
-        if (ind != -1) {
-            card.remove(ind);
+        if (card.contains(move)) {
+            card.remove(move);
             if (card.isEmpty()) {
                 System.out.println("Win");
             }

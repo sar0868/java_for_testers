@@ -1,19 +1,13 @@
 package ru.safarov.lotto;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 
 public class Bag {
 
-    private ArrayList<Integer> bag;
+    private ArrayList<Integer> bag = new ArrayList<Integer>();
 
     public Bag() {
-        createBag();
-    }
-
-    private void createBag() {
         for (int i = 1; i < 91; i++) {
             bag.add(i);
         }
