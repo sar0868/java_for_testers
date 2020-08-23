@@ -15,8 +15,7 @@ public class Bag {
 
     public int getMove() {
         Collections.shuffle(bag);
-        int move = bag.get(0);
-        bag.remove(0);
+        int move = bag.remove(0);
         return move;
     }
     public int sizeBag(){

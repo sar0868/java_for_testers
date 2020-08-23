@@ -16,9 +16,6 @@ public class Row {
         return row;
     }
 
-//    private ArrayList<Integer> row2;
-//    private ArrayList<Integer> row3;
-
     public Row(int min, int max) {
         for (int i = 0; i < 5 ; i++) {
             while (true){
